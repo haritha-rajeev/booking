@@ -11,6 +11,8 @@ Feature: Orange HRM site
              Then add add new employee
              When fill in employee details
              Then add the new employee as admin
+             When reach admin page
+             Then search for the new admin
 
         # Scenario: Traverse Orangehrm
 

@@ -42,13 +42,11 @@ When(/^click on admin$/, async() => {
 });
 
 Then(/^search for an admin$/, async() => {
+  await Orange_admin_um.assert_main();
 	await Orange_admin_um.search_for_admin();
   await Orange_admin_um.assert();
   await browser.pause(10000);
 });
-
-
-
 
 When(/^click on pim$/, async() => {
 	await Orange_admin_um.click_on_pim();
@@ -80,6 +78,18 @@ Then(/^add the new employee as admin$/, async() => {
 
   await browser.pause(10000);
 });
+
+
+When(/^reach admin page$/, async() => {
+  await Orange_admin_um.assert_main();
+});
+
+Then(/^search for the new admin$/, async() => {
+await Orange_admin_um.search_for_admin2();
+//await Orange_admin_um.assert_new_admin();
+await browser.pause(10000);	
+});
+
 
 
 
