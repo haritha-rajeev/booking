@@ -14,31 +14,25 @@ Feature: Orange HRM site
              When reach admin page
              Then search for the new admin
 
-        # Scenario: Traverse Orangehrm
-
-        #     Given I am on the login page of OrangeHRM
-        #      When I login with credentials
-        #      Then I should see the home page
-        #      When I click on leave
-        #      Then I click on 
+  
 
 
 
-        # Scenario: Traverse through the page of saucedemo
+        Scenario: Traverse through the page of saucedemo
 
-        #     Given I am on saucedemo
-        #      When enter wrong credentials
-        #      Then I should not login
+            Given I am on saucedemo
+             When enter wrong credentials
+             Then I should not login
 
 
-        # Scenario: Traverse through the page of saucedemo
+        Scenario: Traverse through the page of saucedemo
 
-        #     Given I am on saucedemo
-        #      When enter correct credentials
-        #      Then I should  login
-        #      When add products to cart
-        #      Then view cart
-        #      When add user details
-        #       And checkout
-        #      Then receive Thank you message
+            Given I am on saucedemo
+             When enter correct credentials
+             Then I should  login
+             When add products to cart
+             Then view cart
+             When add user details
+              And checkout
+             Then receive Thank you message
     
