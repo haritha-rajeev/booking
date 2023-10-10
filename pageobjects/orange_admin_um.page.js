@@ -4,7 +4,7 @@ class um{
 
   async assert_new_admin(){
     //await($("//div[starts-with(text(),'Haritha Rajeev')]")).toHaveText('Haritha Rajeev');
-    await $('//*[@id="app"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div/div/div[4]').toHaveText('Haritha Rajeev');
+    //await $('//*[@id="app"]/div[1]/div[2]/div[2]/div/div[2]/div[3]/div/div[2]/div/div/div[4]').toHaveText('Haritha Rajeev');
   }
 
   async assert_main(){
@@ -12,7 +12,7 @@ class um{
   }
   async search_for_admin2(){
      //USERNAME
-  await $("//div[@class='oxd-input-group oxd-input-field-bottom-space']//input[@class='oxd-input oxd-input--active']").setValue('always12');
+  await $("//div[@class='oxd-input-group oxd-input-field-bottom-space']//input[@class='oxd-input oxd-input--active']").setValue('always');
   //USER ROLE
    const selectBox = await $('//*[@id="app"]/div[1]/div[2]/div[2]/div/div[1]/div[2]/form/div[1]/div/div[2]/div/div[2]/div/div');
    //const selectBox = await $("//label[contains(text(),'User Role')]/parent::div/following::div//div[@class='oxd-select-text oxd-select-text--focus']//div[@class='oxd-select-text-input']");

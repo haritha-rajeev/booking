@@ -11,6 +11,9 @@ const orange_fill_detailsPage = require('../pageobjects/orange_fill_details.page
 const Orange_add_admin=require('../pageobjects/orange_add_admin.page');
 
 
+const BookMyShow_main=require('../pageobjects/BookMyShowMain.page');
+
+
 const Saucedemo_loginpage= require('../pageobjects/saucedemo_loginpage.page');
 const Saucedemo_mainPage = require('../pageobjects/saucedemo_main.page');
 const Saucedemo_viewCartPage = require('../pageobjects/saucedemo_viewCart.page');
@@ -86,13 +89,96 @@ When(/^reach admin page$/, async() => {
 
 Then(/^search for the new admin$/, async() => {
 await Orange_admin_um.search_for_admin2();
-//await Orange_admin_um.assert_new_admin();
+await Orange_admin_um.assert_new_admin();
 await browser.pause(10000);	
 });
 
 
 
 
+
+
+
+Given(/^I am BookMyShow$/, async() => {
+	BookMyShow_main.open();
+});
+
+
+When(/^select Kochi as location$/, async() => {
+	BookMyShow_main.select_Kochi();
+  await browser.pause(10000);
+});
+
+
+
+
+
+
+
+Given(/^Booking site$/, async() => {
+  await browser.maximizeWindow();
+  await browser.url('https://www.agoda.com/en-in/');
+});
+
+When(/^select everything$/, async() => {
+
+  // let frame = await browser.$("//div[@class='ab-in-app-message  ab-background ab-modal-interactions ab-modal ab-centered']");
+  // await frame.waitForExist({ timeout: 20000 });
+  // if(frame.isExisting()){  
+  // await browser.switchToFrame(frame);
+  // await $("//button[@aria-label='Close Message']").click();
+  
+  // }
+	await $("//div[@id='autocomplete-box']").click();
+  await $("//button[@id='destination_suggestion_card' and @data-element-value='Goa']").click();
+  await $("//span[@data-selenium-date='2023-10-24']").click();
+  await $("//span[@data-selenium-date='2023-11-27']").click();
+  await $("//p[starts-with(text(),'Children')]/following::button[2]").click();
+  
+
+//     await browser.switchToFrame(frame);
+   const search =await $("//button[@data-selenium='searchButton']");
+//   await search.waitForExist({ timeout: 20000 });
+  search.click();
+//  // console.log(await $("//button[@data-selenium='searchButton']").isExisting());
+//   await browser.pause(20000);
+
+});
+
+
+Then(/^select a place$/, async() => {
+   let w = await browser.getWindowHandles();
+   await browser.switchToWindow(w[1]);
+   await expect(browser).toHaveUrlContaining('agoda');
+
+   await $("//span[starts-with(text(),'SEARCH')]/parent::button").click();
+//assert
+//await expect(browser).toHaveUrl('');
+//await expect($("//input[@value='Goa']")).toHaveText('Goa');
+// await expect($("//input[@value='Goa']/parent::div")).toHaveText('Goa');
+await expect($("//div[@aria-label='Search filters form. Type a destination or hotel name. Current destination is Goa']")).toHaveText('Goa');
+await expect($("//div[@class='SearchBoxTextDescription__title' and starts-with(text(),'24 Oct 2023')]")).toHaveText('24 Oct 2023');
+
+await expect($("//div[@class='SearchBoxTextDescription__title' and starts-with(text(),'27 Nov 2023')]")).toHaveText('27 Nov 2023');
+await expect($("//div[@class='SearchBoxTextDescription__title']//span[@data-selenium='adultValue']")).toHaveText('2 adults');
+await expect($("//div[@class='SearchBoxTextDescription__title']//span[@data-selenium='childValue']")).toHaveText('1 child');
+
+
+
+
+  await $("//span[starts-with(text(),'Property type')]/following::li[6]/span/span[1]/span").click();
+  await expect($('//*[@id="SideBarLocationFilters"]/div[1]/div[3]/div[2]/ul/li/span/span[2]/span/span')).toHaveText('Motel');
+   await browser.pause(5000);
+  //await expect($("//h3[@data-selenium='hotel-name' and starts-with(text(),'FabEscape')]")).toHaveText('FabEscape Ocean Wellness Resort With Pool');
+ //await $("//div[@class='Box-sc-kv6pi1-0 hRUYUu JacketContent JacketContent--Empty']/a[@aria-label='FabEscape Ocean Wellness Resort With Pool']").click();
+ //await $("//div[@class='Box-sc-kv6pi1-0 edeiva JacketContent JacketContent--PulseProperty']/a").click();
+  await browser.pause(5000);
+  //let w1 = await browser.getWindowHandles();
+   //await browser.switchToWindow(w1[2]);
+  // await expect($("//p[starts-with(text(),'FabEscape Ocean') and @class='HeaderCerebrum__Name']")).toHaveText('FabEscape Ocean Wellness Resort With Pool');
+   //await $("//div[starts-with(text(),'Book now')]/parent::button").click();
+   await browser.pause(5000);
+});
 
 
 

@@ -16,7 +16,7 @@ await $("//label[starts-with(text(),'Status')]/parent::div/following-sibling::di
 await $("//span[starts-with(text(),'Enabled')]/parent::div").click();
 
 //USERNAME
-await $("//label[starts-with(text(),'Username')]/parent::div/following-sibling::div/input").setValue('always12');
+await $("//label[starts-with(text(),'Username')]/parent::div/following-sibling::div/input").setValue('always');
 
 
 //PASSWORD

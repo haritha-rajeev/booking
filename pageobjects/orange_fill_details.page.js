@@ -58,6 +58,18 @@ await expect($("//*[@class='oxd-text oxd-text--h6 --strong']")).toHaveText('Hari
    const select2= await $("//label[starts-with(text(),'Marital')]/parent::div[@class='oxd-input-group__label-wrapper']/following-sibling::div/div/div");
    select2.click();
    await $("//span[starts-with(text(),'Single')]").click();
+
+
+   //DOB
+   const dob=await $("//label[starts-with(text(),'Date of Birth')]/following::input[1]");
+   dob.click();
+   await $("//div[@class='oxd-calendar-selector-year-selected']").click();
+   await $("//li[starts-with(text(),'2000')]").click();
+   await $("//div[@class='oxd-calendar-selector-month-selected']").click();
+   await $("//li[starts-with(text(),'September')]").click();
+   await $("//div[starts-with(text(),'5')]").click();
+
+
     
     
 
